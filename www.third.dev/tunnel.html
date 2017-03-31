@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="/plugins/easyXDM.js"></script>
+    <script src="/plugins/jquery.js"></script>
+    <script>
+        function apiTunnel(endpoint, params, callback) {
+            var options = {
+                url: 'http://www.third.dev/server/' + endpoint,
+                data: params,
+                type: 'GET'
+            };
+
+            options.complete = function(xhr) {
+                var response = {};
+
+                if (xhr.status !== 200) {
+                    response.error = xhr.responseText;
+                }
+                else {
+                    response.data = JSON.parse(xhr.responseText);
+                }
+
+                callback(response);
+            };
+
+            jQuery.ajax(options);
+        }
+
+        /** init **/
+        var rpc = new easyXDM.Rpc({}, {
+            local: {
+                apiTunnel: apiTunnel
+            }
+        });
+    </script>
+</html>

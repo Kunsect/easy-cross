@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> into - index </title>
+    <link href="/style/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Space out content a bit */
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Everything but the jumbotron gets side spacing for mobile first views */
+        .header,
+        .marketing,
+        /* Custom page header */
+        .header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        /* Make the masthead heading the same height as the navigation */
+        .header h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 40px;
+        }
+
+        /* Customize container */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 730px;
+            }
+        }
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .jumbotron .btn {
+            padding: 8px 20px;
+            font-size: 18px;
+            border-bottom: 3px solid #56a756;
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 40px 0;
+        }
+        .marketing p + h4 {
+            margin-top: 28px;
+        }
+
+        .btn-lg {
+            border-radius: 0px;
+        }
+
+        /* Responsive: Portrait tablets and up */
+        @media screen and (min-width: 768px) {
+            /* Remove the padding we set earlier */
+            .header,
+            .marketing {
+                padding-right: 0;
+                padding-left: 0;
+            }
+            /* Space out the masthead */
+            .header {
+                margin-bottom: 30px;
+            }
+            /* Remove the bottom border on the jumbotron for visual effect */
+            .jumbotron {
+                border-bottom: 0;
+            }
+        }
+
+
+        /* è‡ªå®šä¹‰ */
+
+        .jumbotron .btn.btn-danger {
+            border-bottom: 3px solid #d23c37;
+        }
+        .btn-success:hover {
+            background: #52a552;
+            border-bottom: 3px solid #4a8c4a;
+        }
+        .btn-danger:hover {
+            background: #d9534f;
+            border-bottom: 3px solid #d9534f;
+        }
+
+        .api-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header clearfix">
+            <h3 class="text-muted">API 请求页面</h3>
+        </div>
+
+        <div class="jumbotron" style="border-radius: 0px;">
+            <div class="api-container">
+                <div class="btn btn-lg btn-success" href="#" role="button" id="test">API 测试</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="http://www.third.dev/entry.js"></script>
+<script>
+    SDK.init(function() {
+        document.getElementById('test').addEventListener('click', function() {
+            SDK.api('index.php', null, function(response) {
+                if (response.data.status) {
+                    alert(response.data.result);
+                }
+            })
+        });
+    });
+</script>
+
+</html>
